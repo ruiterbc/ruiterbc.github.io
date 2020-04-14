@@ -12,9 +12,9 @@ O papel do computador é agir como um avaliador ou executor de expressões e imp
 A expressão representa um valor a ser obtido, cuja tarefa o computador é capaz de realizar.
 
 A forma básica de interação entre o programador e o computador é:
-
+```
 Lê -> Calcula -> Exibe
-
+```
 A seqüência de interação entre o programador e o computador é chamada de seção.
 
 O ambiente de interação utilizado neste curso será o ambiente:
@@ -27,7 +27,7 @@ Uma propriedade característica da P.F. é que uma expressão possui um valor be
 Os scripts são na verdade uma lista de definições de funções, feitas pelo programador.
 
 Exemplos de definições de funções:
-
+```
 def quadrado(n):
     return n*n
 
@@ -36,25 +36,21 @@ def menor (n,m):
         return n 
     else: 
         return m
+```
+
 O propósito de uma definição é fazer uma associação entre um nome e um valor.
 
 Um conjunto de ligações é chamado de contexto ou ambiente. Um exemplo de uma seção:
-
-[3]
-
-
+```
 quadrado (3 + 4)
 49
-[4]
-
 
 menor (3, 4)
 3
-[5]
-
 
 quadrado ( menor (3, 4) )
 9
+```
 O avaliador pode utilizar as ligações para fazer simplificações. Algumas expressões podem ser avaliadas sem que seja indicado o contexto: 3 + 4.
 
 Isto só é possível porque algumas operações são consideradas primitivas e fazem parte do avaliador: Operações Aritméticas (+, *, -, /, etc.) e Fornecimento de Operações Pré-definidas (mod, div, even, odd, etc.).
