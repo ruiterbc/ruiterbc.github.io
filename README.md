@@ -1,6 +1,6 @@
 ## Programação Funcional
 
-Programação Funcional com Python
+### Programação Funcional com Python
 Como o nome sugere, a essência da Programação Funcional (PF) como método de programação é a construção de funções. A utilização da palavra "função" é mais no sentido matemático do que no sentido utilizado nas linguagens de programação convencionais. Na matemática, uma função é um objeto que fornece uma lista de todas as variáveis para as quais ele varia, juntamente com uma fórmula para indicar o valor correspondente. Assim, por exemplo, se escrevermos: y = x^2 dizemos que y é função de x pois, quando x varia, y também varia como seu quadrado.
 
 A Programação Funcional envolve notação e conceitos de classes ou conjuntos que soam familiares a qualquer pessoa com pequena experiência matemática. O principal papel do programador é construir uma função para resolver um determinado problema. Essa função, que pode envolver outras funções, é expressa numa notação que obedece aos princípios matemáticos.
@@ -58,11 +58,8 @@ Isto só é possível porque algumas operações são consideradas primitivas e 
 Os scripts podem ser modificados a qualquer momento, submetidos ao avaliador e um novo contexto será iniciado.
 
 Podemos anexar ao script 01, definido anteriormente as novas definições:
-
+```
 Script 02:
-
-[6]
-
 
 def lado(): 
     return 12
@@ -73,17 +70,11 @@ def area():
 area()    
         
 144
-[7]
-
 
 menor ((area() + 4), 150)
 148
 
-
-[-]
-
-
-
+```
 
 
 You can use the [editor on GitHub](https://github.com/ruiterbc/ruiterbc.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
