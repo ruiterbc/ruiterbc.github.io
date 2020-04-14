@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-44179805-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-44179805-2');
+        </script>
+
+        <meta charset="utf-8">
+
+		<title>INTRODUÇÃO A COMPUTAÇÃO</title>
+
+		<meta name="description" content="Professor Associado IComp/UFAM.">
+		<meta name="author" content="Ruiter Braga Caldas">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <section>
+                    <div style="width: 1056px; height: 300px">
+                        <h1>Resolução de Problemas para </h1>
+						<h2>Construção de Algoritmos</h2>
+                    </div>
+                    <div style="width: 1056px; height: 200px; text-align: left">
+                        by,<br>
+                        Ruiter Braga Caldas<br/>
+                    </div>
+                    <aside class="notes">Notas: Bem Vindos!</aside>
+				</section>
+				
+				<section>
+					<h3>A Arte de Resolver Problemas:</h3>
+                    <ul>
+                        <li>Estudar o domínio do problema antes da construção da solução é fundamental para o Sucesso x Fracasso do Projeto.</li>
+                        <li>George Polya defende a resolução de problemas como uma habilidade prática.</li>
+                        <li>As habilidades são adquiridas por imitação e prática. 
+							Exemplo: nadar, andar de bicicleta, etc.</li>
+                        <li>Aprende-se a resolver problemas, resolvendo-os</li>
+                        
+                    </ul>
+                </section>
+				<section>
+					<h3>Polya propõe quatro fases:</h3>
+                    <ol>
+                        <li>Compreender o Problema;</li>
+                        <li>Estabelecer um Plano de Solução;</li>
+                        <li>Executar o Plano;</li>
+						<li>Fazer uma Avaliação;</li>
+					</ol>	
+						<div align="right">
+							<img src="images/polya.png">
+						</div>
+    			</section>
+				
+				<section>
+					<h3>Compreender o Problema:</h3>
+                    <ul>
+                        <li>abstrair o que é realmente necessário para o seu entendimento.</li>
+                        <li>entender o enunciado (verbal, textual, formal, etc). </li>
+                        <li>verificar como os itens estão inter-relacionados.</li>
+                    </ul>
+                </section>
+
+				<section>
+					<h3>Estabelecer um Plano de Solução:</h3>
+                    <ul>
+                        <li>construir um planejamento para a Solução.</li>
+                        <li>o caminho até o estabelecimento do plano pode ser longo e tortuoso.</li>
+						<li>o principal é a concepção da idéia da solução (o plano).</li>
+						<li>boas idéias são baseadas em experiências e em conhecimentos previamente adquiridos. </li>
+						<li>se for um problema difícil, deve-se usar um problema correlato e adequá-lo ao problema em questão. abstrair o que é realmente necessário para o seu entendimento.</li>
+                    </ul>
+                </section>	
+
+				<section>
+					<h3>Executar o Plano :</h3>
+                    <ul>
+                        <li>o plano proporciona apenas um roteiro geral do “que” deve ser feito para a resolução do problema.</li>
+                        <li>é necessário ter a certeza de que tudo está claro, sem obscuridade ou erros.</li>
+						<li>executar o plano torna-se a parte mais fácil.</li>
+						<li>no contexto de programação, é a hora de roda o programa</li>
+                    </ul>
+				</section>
+				<section>
+					<h3>Fazer uma Avaliação;</h3>
+                    <ul>
+                        <li>uma vez chegado à solução do problema, deve-se fazer uma retrospectiva da solução completa, reconsiderando e reexaminando o resultado final e o caminho que o levou até este.</li>
+						<li>é a hora de consolidar o conhecimento e a capacidade de resolver problemas. </li>
+                    </ul>
+                </section>
+				<section>
+					<h2>Programação</h2>
+					<ul>
+						<li><a href="https://www.cs.kent.ac.uk/people/staff/sjt/Haskell_craft/HowToProgIt.html" target="_blank">Fases de Thompson baseado em Polya:</a></li>
+						<li>Compreender o Problema: 
+							ter uma idéia clara do problema por meio da sua especificação.</li>
+						<ul>
+                            <li>Quais são as entradas (ou argumentos)?</li>
+							<li>Quais são as saídas (ou resultados)?</li>
+							<li>Qual o tipo dos dados envolvidos?</li>
+							<li>A especificação pode ser satisfeita?</li>
+							<li>Ela é suficiente, redundante ou contraditória?</li>
+							<li>Quais as condições especiais?. </li>
+                        </ul>
+					</ul>
+				</section>
+				<section>
+					<h2>Programação</h2>
+					<ul>
+					    <li>Planejamento da Solução:</li>
+						<ul>	
+                            <li>O problema já foi resolvido antes, ou uma versão ligeiramente modificada? </li>
+							<li>Alguma função ou outro programa pode ser útil? </li>
+							<li>O problema similar pode ser usado como resposta ou como uma parte auxiliar da resposta?</li>
+							<li>Os métodos (funções) do problema similar podem ser usados? </li>
+							<li>Se não puder resolver o problema proposto tente resolver um relacionado.</li>
+							<li>Ou resolva um mais geral ou mais específico ou um análogo. </li>
+							<li>Uma parte do problema pode ser resolvido? </li>
+						</ul>	
+					</ul>
+				</section>	
+				<section>
+					<h2>Programação</h2>
+					<ul>
+					    <li>Executar o Plano:
+								</li>
+						<ul>	
+                            <li>Verificar se cada passo do programa realiza as funções do projeto. </li>
+							<li>Verificar se os passos estão claros e consistentes com o projeto.</li>
+							<li>O programa pode ser escrito em estágios ou módulos menores? </li>
+							<li>Considere as diferentes possibilidades para a entrada. </li>
+							<li>O resultado pode ser computado em parte separadas? </li>
+							<li>Como as partes separadas podem ser unidas para produzir o resultado final?</li>
+							<li>O problema pode ser resolvido utilizando uma parte pequena da entrada, e depois usar esta parte para compor o resultado final (Recursão)? </li>
+						</ul>	
+					</ul>
+				</section>	
+				<section>
+					<h2>Programação</h2>
+					<ul>
+					    <li>Refletir sobre a solução :</li>
+						<ul>	
+                            <li>O programa funciona adequadamente para entradas variadas? </li>
+							<li>O Programa funciona com entradas inadequadas ou fora do contexto? </li>
+							<li>É possível construir um outro programa diferente para o problema se fosse necessário? </li>
+							<li>É possível usar esse programa ou suas partes para resolver outros problemas? </li>
+							<li>O programa pode ser melhorado? </li>
+						</ul>	
+					</ul>
+				</section>	
+				<section>
+					<h3>Encontrar o maior entre três números fornecidos.</h3>
+					<ol>
+						<li>Entender o problema.</li>
+						<li>Estabelecer o plano da solução.</li>
+						<li>Executar a solução.</li>
+						<li>Examinar a solução.</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Entender o problema.</h3>
+					<ol>
+						<li>Não é um problema complexo.</li>
+						<li>Noções de matemática básica é necessário.</li>
+						<li>Noção de ordenação numérica é necessário.</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Estabelecer o plano da solução.</h3>
+					<ol>
+						<li>Podemos usar um problema correlato:</li>
+						<li>Para ordenar 3 (três) números, podemos começar considerando como ordenar 2 (dois) números.</li>
+						<li>Para descrever a solução podemos usar a notação e o conceito de função matemática, visto que é um conceito básico.</li>
+						<div align="right">
+							<img width="40%" src="images/funcao.png">
+						</div>
+					</ol>
+				</section>
+				<section>
+					<h2>Conceito de Função:</h2>
+                    <div align="center">
+                        <img src="images/nocaofuncao.png">
+                    </div>
+				</section>
+				<section>
+					<h3>Estabelecer o plano da solução.</h3>
+					<ul>
+						<li>Notação utilizada:</li>
+						<div align="left">
+							<img src="images/notacao.png">
+						</div>
+						<li>Currying: Independentemente do número de entradas, só há um valor de saída.</li>
+						<li>Essa definição especifica cada tipo usado como entrada, sendo que o último tipo é o retorno da função.</li>
+						<li>Essa definição é a assinatura da função.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Estabelecer o plano da solução.</h3>
+					<ul>
+						<li>Função Maior_2:</li>
+						<div align="left">
+							<img src="images/maior2.png">
+						</div>
+						<li>A funcao Maior_2, recebe dois valores do tipo Int (Inteiro) como entradas e devolve um valor do tipo Int (Inteiro) como resultado. </li>
+						<li>A função recebe os valores nomeados de "a" e "b" como entradas. </li>
+						<li>Em seguida faz os testes, que são excludentes, na ordem sequencial até encontrar uma condição verdeira.</li>
+						<li>As barras verticais ( | ) indicam teste do tipo:<code> | condição = resposta. </code>  </li>
+					</ul>
+				</section>
+				
+				<section>
+					<h3>Estabelecer o plano da solução.</h3>
+					<ul>
+						<li>Função Maior_2:</li>
+						<div align="left">
+							<img src="images/maior2.png">
+						</div>
+						<li>O primeiro teste verifica se o valor de "a" é maior ou igual ao valor de "b", se for então devolve "a". </li>
+						<li>O próximo teste só será avaliado se o anterior falhar.</li>
+						<li>O teste nomeado "Caso contrário" sempre dá positivo e, nesta função, devolve "b" como resposta. </li>
+						<li>A avaliação completa da função pode ser resumida: Se "a" >= "b", devolve "a", caso contrário devolve "b.</li>
+					</ul>
+				</section>
+				
+				<section>
+					<div style="width: 1056px; height: 100px">
+						<img width="15%" src="images/simbolo.png">
+					</div>
+					<div style="width: 1056px; height: 100px">
+					</div>
+					<div style="width: 1056px; height: 600px;">
+						<ul>
+							<li>Ambientes utilizados:</li>
+							<ul>
+								<li><a href="http://codebench.icomp.ufam.edu.br/" target="_blank">Codebench</a></li>
+								<li><a href="https://sites.google.com/view/introducao-computacao-ruiter/home" target="_blank">Programação Funcional</a></li>
+								<li><a href="http://haskell.tailorfontela.com.br/" target="_blank">Haskell</a></li>
+								<li><a href="https://panda.ime.usp.br/panda/python" target="_blank">Python</a></li>
+							</ul>
+						</ul>
+					</div>
+				</section>
+
+				<section data-background="images/questions.png">
+					<div align="right"><h2>Obrigado!</h2></div>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
