@@ -5,7 +5,7 @@ Como o nome sugere, a essência da Programação Funcional (PF) como método de 
 
 A Programação Funcional envolve notação e conceitos de classes ou conjuntos que soam familiares a qualquer pessoa com pequena experiência matemática. O principal papel do programador é construir uma função para resolver um determinado problema. Essa função, que pode envolver outras funções, é expressa numa notação que obedece aos princípios matemáticos.
 
-As funções definidas pelo programador são chamadas de scripts.
+As funções definidas pelo programador são chamadas de **scripts**.
 
 O papel do computador é agir como um avaliador ou executor de expressões e impressor dos resultados.
 
@@ -15,15 +15,17 @@ A forma básica de interação entre o programador e o computador é:
 ```
 Lê -> Calcula -> Exibe
 ```
-A seqüência de interação entre o programador e o computador é chamada de seção.
+A seqüência de interação entre o programador e o computador é chamada de **seção**.
 
 O ambiente de interação utilizado neste curso será o ambiente:
 
-JUPYTER que é um ambiente de execução para a linguagem de programação Python 3. A qual possue várias caracterísiticas incorporadas do estilo de programação Funcional.
+**JUPYTER** - que é um ambiente de execução para a linguagem de programação **Python 3**. Esse ambiente possue várias caracterísiticas incorporadas do estilo de programação Funcional.
 
-Uma propriedade característica da P.F. é que uma expressão possui um valor bem definido, não importando a ordem da avaliação pelo computador. O significado de uma expressão é o seu valor, e a tarefa do computador é encontrá-lo. Por exemplo o valor da expressão 6 * 7 é 42:
+Uma propriedade característica da P.F. é que uma expressão possui um valor bem definido, não importando a *ordem* da avaliação pelo computador. O significado de uma expressão é o seu *valor*, e a tarefa do computador é encontrá-lo. Por exemplo o valor da expressão 6 * 7 é 42:
+```
 6*7
 42
+```
 Os scripts são na verdade uma lista de definições de funções, feitas pelo programador.
 
 Exemplos de definições de funções:
