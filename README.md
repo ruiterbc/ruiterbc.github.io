@@ -8,7 +8,7 @@
 4. [Funções e Definições](#FunDef)
 5. [Numeros Inteiros](#NumInt)
 6. [Definição de Funções Simples](#FunSimpl)
-7. [Números Reais]("NumReal)
+7. [Números Reais](#NumReal)
 8. [Valores Relacionais e Lógicos](#ValReLog)
 
 ### Programação Funcional com Python
@@ -42,7 +42,7 @@ Os scripts são na verdade uma lista de definições de funções, feitas pelo p
 
 Exemplos de definições de funções:
 ```
-Script 01:
+Script:
 
 def quadrado(n):
     return n*n
@@ -75,7 +75,7 @@ Os scripts podem ser modificados a qualquer momento, submetidos ao avaliador e u
 
 Podemos anexar ao script 01, definido anteriormente as novas definições:
 ```
-Script 02:
+Script:
 
 def lado(): 
     return 12
@@ -108,13 +108,13 @@ O computador avaliar as expressões pela redução da expressão para a sua **"f
 **Avaliação**, **Redução** ou **Simplificação** são intercambiáveis. Utilizaremos o símbolo **"=>"** para indicar **"reduzido a"**.
 
 Como exemplo vamos mostrar as possíveis reduções para a expressão: Quadrado ( 3 + 4), onde a definição de Quadrado x => x * x
-Redução 01:
+Redução-1:
 ```
 Quadrado ( 3 + 4)   => Quadrado 7   (+)
                     => 7 * 7        (Quadrado)
                     => 49           (*)
 ```
-Redução 02:
+Redução-2:
 ```
 Quadrado ( 3 + 4)   => (3 + 4) * (3 + 4)    (Quadrado)
                     => 7 * (3 + 4)          (+)
@@ -160,13 +160,13 @@ Uma expressão bem formada possui o seu tipo deduzido a partir dos tipos dos seu
 A maior conseqüência da disciplina imposta pelo conceito de tipagem forte é que uma expressão que não possa ter o seu tipo identificada não é bem formada e será rejeitada antes de ser avaliada.
 
 ```
-Script 03-a:
+Script:
 
 def ay x = ´A´           
 ```
 Para qualquer x, a resposta será sempre 'A', sendo o tipo inferido CHAR.
 ```
-Script 03-b:
+Script:
 
 def bee x = x + ay x   
 ```
@@ -190,7 +190,7 @@ Em Programação Funcional, funções são **valores como outro qualquer**, e po
 
 É importante manter em mente a distinção entre um valor da função e uma particular definição dela. Existem muitas definições possíveis para a mesma função:
 ```
-Script 04:
+Script:
 
 def dobro1  x = x + x
 
@@ -326,7 +326,7 @@ Como exemplo observe a seguinte função :
 
 O mesmo dispositivo pode ser utilizado nas definições de atribuições locais para funções:
 ```
-Script 05:
+Script:
 
 f x y    =  (a + 1) * (a + 2)
             where a = (x + y) / 2
@@ -424,13 +424,10 @@ A sintaxe é a função antes da tupla, assim, **fst (2.3,4)** gera o valor **2.
 
 Já sabemos como definir funções simples, agora podemos definir novas funções para trabalhar com reais e tuplas. Para calcular a área de um círculo, definimos a seguinte função:
 ```
-Script 06:
+Script:
 
-def areacirc r =
-
-                const * r ^ 2
-
-                where const = 3.14
+def areacirc r = const * r ^ 2
+                 where const = 3.14
 ```
 Para pegar o primeiro elemento de uma dupla (2-upla)
 ```
