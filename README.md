@@ -77,40 +77,61 @@ menor ((area() + 4), 150)
 148
 
 ```
+### Expressões e Valores
+**Expressão** é uma noção fundamental em P.F. Existem muitos tipos de expressões e nem todas podem ser descritas neste formalismo, mas todas possuem características comuns.
 
+A característica mais importante da notação matemática é que uma **expressão** é usada somente para descrever (ou denotar) um **valor**.
 
-You can use the [editor on GitHub](https://github.com/ruiterbc/ruiterbc.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+O significado de uma expressão é o seu valor e mais nada. O valor de uma expressão depende somente dos valores dos seus constituintes e, essas subexpressões, podem ser substituídas pelos seus valores.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Uma expressão pode conter **"nomes"** para quantidades desconhecidas, embora seja comum na matemática entendermos que diferentes ocorrências do mesmo nome se refere ao mesmo valor, embora desconhecido.
 
-### Markdown
+Estes nomes são chamados **"variáveis"**, mas estas variáveis não variam como nas linguagens de programação, pois elas sempre denotam o mesmo valor. A esta propriedade chamamos de **Transparência Referencial**.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Entre os tipos de valores que uma variável pode denotar encontram-se: números, valores-verdade, caracteres, tuplas, funções e listas.
 
-```markdown
-Syntax highlighted code block
+### Redução
+O computador avaliar as expressões pela redução da expressão para a sua **"forma equivalente mais simples"** e imprime o resultado.
+**Avaliação**, **Redução** ou **Simplificação** são intercambiáveis. Utilizaremos o símbolo **"=>"** para indicar **"reduzido a"**.
 
-# Header 1
-## Header 2
-### Header 3
+Como exemplo vamos mostrar as possíveis reduções para a expressão: Quadrado ( 3 + 4), onde a definição de Quadrado x => x * x
 
-- Bulleted
-- List
+Quadrado ( 3 + 4)	=> Quadrado 7	(+)
+=> 7 * 7	(Quadrado)
+=> 49	(*)
 
-1. Numbered
-2. List
+Quadrado ( 3 + 4)	=> (3 + 4) * (3 + 4)	(Quadrado)
+=> 7 * (3 + 4)	(+)
+=> 7 * 7	(+)
+=> 49	(*)
+Nestes exemplos os símbolos entre parênteses indica a operação que foi utilizada para fazer a redução (ou a transformação). 
 
-**Bold** and _Italic_ and `Code` text
+Quando uma expressão não pode mais ser reduzida então ela é impressa.
 
-[Link](url) and ![Image](src)
-```
+No primeiro exemplo a ordem de aplicação das reduções foram: (+), (Quadrado), (*). 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+No segundo exemplo a ordem foi : (Quadrado), (+), (+), (*). Assim a primeira opção gastou um número menor de reduções que a segunda. 
 
-### Jekyll Themes
+É importante fazer a distinção entre um valor e sua representação através de expressões.  A forma equivalente mais simples não é o valor,  mas, a sua representação.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ruiterbc/ruiterbc.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Existem muitas representações de um mesmo valor, por exemplo o valor: "quarenta e nove", pode  ter as seguintes representações:
 
-### Support or Contact
+decimal =
+49
+romano =
+XLIX
+Expressão =
+7 * 7
+binário 16 bits =
+0000000000110001
+Uma expressão está na forma canônica ou forma normal se ela não pode mais ser reduzida.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Alguns valores não possuem representação canônica e outros não possuem representação finita. Ex. O número PI não possui representação decimal finita.
+
+Algumas expressões não podem ser reduzidas porque elas não denotam valores bem definidos no sentido matemático. 
+
+                    Ex. Uma divisão de um número qualquer por zero, 1/0. 
+
+Uma tentativa de avaliar esta expressão pode ocasionar um erro ou cair numa seqüência tão longa sem produzir resultados.
+
+Para manter a condição de que toda expressão deve denotar um valor, é conveniente introduzir um símbolo para representar o valor indefinido: "NIL"
