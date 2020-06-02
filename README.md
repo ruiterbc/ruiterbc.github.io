@@ -11,12 +11,12 @@
 7. [Números Reais](#NumReal)
 8. [Valores Relacionais e Lógicos](#ValReLog)
 
-### Programação Funcional com Python
-Como o nome sugere, a essência da **Programação Funcional (PF)** como método de programação é a construção de funções. A utilização da palavra "função" é mais no sentido matemático do que no sentido utilizado nas linguagens de programação convencionais. Na matemática, uma função é um objeto que fornece uma lista de todas as variáveis para as quais ele varia, juntamente com uma fórmula para indicar o valor correspondente. Assim, por exemplo, se escrevermos: y = x^2 dizemos que y é função de x pois, quando x varia, y também varia como seu quadrado.
+### Programação Funcional (Haskell & Python)
+Como o nome sugere, a essência da **Programação Funcional (PF)** como método de programação é a construção de funções. A utilização da palavra *função* é mais no sentido matemático do que no sentido utilizado nas linguagens de programação convencionais. Na matemática, uma função é um objeto que devolve uma lista de todas as variáveis para as quais ele varia, onde o resultado é construido por meio de uma fórmula (*algoritmo*) que calcula o valor correspondente. Assim, por exemplo, se escrevermos: *y = x^2* dizemos que *y* é função de *x* pois, quando *x* varia, *y* também varia como seu quadrado.
 
 A Programação Funcional envolve notação e conceitos de classes ou conjuntos que soam familiares a qualquer pessoa com pequena experiência matemática. O principal papel do programador é construir uma função para resolver um determinado problema. Essa função, que pode envolver outras funções, é expressa numa notação que obedece aos princípios matemáticos.
 
-As funções definidas pelo programador são chamadas de **scripts**.
+Essas funções definidas pelo programador são chamadas em P.F. de **scripts**.
 
 O papel do computador é agir como um avaliador ou executor de expressões e impressor dos resultados.
 
@@ -29,20 +29,34 @@ Lê -> Calcula -> Exibe
 A seqüência de interação entre o programador e o computador é chamada de **seção**.
 
 O ambiente de interação utilizado neste curso será o ambiente:
-```
-**Codebench** - que é um ambiente de aprendizagem para a linguagem de programação **Python 3**. 
-Esse ambiente possue várias caracterísiticas incorporadas do estilo de programação Funcional.
-```
-Uma propriedade característica da P.F. é que uma expressão possui um valor bem definido, não importando a **ordem** da avaliação pelo computador. O significado de uma expressão é o seu **valor**, e a tarefa do computador é encontrá-lo. Por exemplo o valor da expressão 6 * 7 é 42: (obs. A entrada do usuário será apresentada pelo sinal ">")
+
+**Codebench** - É um ambiente de aprendizagem disponibilizado pelo [Instituto de Computação](https://codebench.icomp.ufam.edu.br) da UFAM, que permite a utilização de várias linguagens de programação. Nesse ambiente usaremos as linguagens **Haskell** e **Python 3** para escrever os *scrips*. Cabe observar que algumas características conceituais presentes em programação funcional podem não ter uma representações direta nas linguagens. A linguagem Haskell incorpora a maioria dos conceitos, porém a linguagem Python não implementa todos os conceitos.
+
+Uma propriedade característica da P.F. é que uma expressão possui um valor bem definido, não importando a **ordem** da avaliação pelo computador. O significado de uma expressão é o seu **valor** e a tarefa do computador é encontrá-lo. Por exemplo o valor da expressão 6 * 7 é 42. 
+Nos exemplos, a entrada fornecida pelo usuário por meio da interface interativa do Haskell será apresentada pelo sinal ">" e Python será apresentada pelo sinal ">>>". 
 ```
 > 6*7
 42
+
+>>> 6*7
+42
 ```
-Os scripts são na verdade uma lista de definições de funções, feitas pelo programador.
+Os scripts são na verdade uma lista de definições de funções, feitas pelo programador e gravado em arquivos com **\<nome do arquivo\>.hs** para a linguagem Haskell e **\<nome do arquivo\>.py** para a linguagem Python, que devem ser carregados no ambiente interativo da linguagem para a sua execução. 
+
+A instalação dos ambientes das linguagens não será tratada neste texto.
 
 Exemplos de definições de funções:
 ```
-Script:
+Script Haskell:
+
+quadrado n = n * n
+
+menor n m 
+    | n <= m = n 
+    | otherwise = m
+```
+```
+Script Python:
 
 def quadrado(n):
     return n*n
@@ -54,39 +68,67 @@ def menor (n,m):
         return m
 ```
 
-O propósito de uma definição é fazer uma associação entre um nome e um valor.
+O propósito da definição de uma função é fazer uma associação entre um nome e um valor.
 
-Um conjunto de ligações é chamado de contexto ou ambiente. Um exemplo de uma seção:
+Um conjunto de associações entre nomes e seus valores é chamado de **contexto** ou **ambiente**. A interação do usuário com o ambiente de execução da linguagem é chamado de **seção**. Um exemplo de uma seção:
 ```
-> quadrado (3 + 4)
+Ambiente Haskell:
+
+> quadrado 3 + 4
 49
 
-> menor (3, 4)
+> menor 3 4
 3
 
-> quadrado ( menor (3, 4) )
+> quadrado ( menor 3 4 )
 9
 ```
-O avaliador pode utilizar as ligações para fazer simplificações. Algumas expressões podem ser avaliadas sem que seja indicado o contexto: 3 + 4.
-
-Isto só é possível porque algumas operações são consideradas primitivas e fazem parte do avaliador: Operações Aritméticas (+, *, -, /, etc.) e Fornecimento de Operações Pré-definidas (mod, div, even, odd, etc.).
-
-Os scripts podem ser modificados a qualquer momento, submetidos ao avaliador e um novo contexto será iniciado.
-
-Podemos anexar ao script 01, definido anteriormente as novas definições:
 ```
-Script:
+Ambiente Python:
+
+>>> quadrado (3 + 4)
+49
+
+>>> menor (3, 4)
+3
+
+>>> quadrado ( menor (3, 4) )
+9
+```
+O avaliador pode utilizar as associações para fazer simplificações. Algumas expressões podem ser avaliadas sem que seja indicado o contexto: 3 + 4.
+
+Isto só é possível porque algumas operações são consideradas primitivas e fazem parte do contexto inicial do avaliador(chamado Prelude em Haskell). As Operações Aritméticas (+, *, -, /, etc.) e fornecimento de Operações Pré-definidas (mod, div, even, odd, etc.) são exemplos do contexto inicial das linguagens.
+
+Os scripts podem ser modificados a qualquer momento, submetidos ao avaliador e um novo contexto será iniciado. Podemos anexar ao script definido anteriormente as novas definições:
+```
+Script Haskell:
+
+lado =  12
+
+area = quadrado lado
+```
+```
+> area          
+144
+
+> menor (area + 4) 150
+148
+
+```
+```
+Script Python:
 
 def lado(): 
     return 12
 
 def area():
     return quadrado (lado())
- 
-> area()           
+```
+``` 
+>>> area()           
 144
 
-> menor ((area() + 4), 150)
+>>> menor ((area() + 4), 150)
 148
 
 ```
@@ -97,17 +139,20 @@ A característica mais importante da notação matemática é que uma **express�
 
 O significado de uma expressão é o seu valor e mais nada. O valor de uma expressão depende somente dos valores dos seus constituintes e, essas subexpressões, podem ser substituídas pelos seus valores.
 
-Uma expressão pode conter **"nomes"** para quantidades desconhecidas, embora seja comum na matemática entendermos que diferentes ocorrências do mesmo nome se refere ao mesmo valor, embora desconhecido.
+Uma expressão pode conter **"nomes"** para quantidades desconhecidas, embora seja comum na matemática entendermos que diferentes ocorrências do mesmo nome se referem ao mesmo valor, embora desconhecido.
 
-Estes nomes são chamados **"variáveis"**, mas estas variáveis não variam como nas linguagens de programação, pois elas sempre denotam o mesmo valor. A esta propriedade chamamos de **Transparência Referencial**.
+Estes nomes são chamados **"variáveis"**, mas estas variáveis não variam como nas linguagens de programação convencionais, pois elas sempre denotam o mesmo valor. A esta propriedade chamamos de **Transparência Referencial**.
 
-Entre os tipos de valores que uma variável pode denotar encontram-se: números, valores-verdade, caracteres, tuplas, funções e listas.
+Entre os tipos de valores que uma variável pode denotar encontram-se: números(Inteiros ou Reais), valores-verdade(Booleanos), caracteres, tuplas(Pares), funções e listas.
 
 ### [Redução]()<a name="Reducao"></a>
 O computador avaliar as expressões pela redução da expressão para a sua **"forma equivalente mais simples"** e imprime o resultado.
 **Avaliação**, **Redução** ou **Simplificação** são intercambiáveis. Utilizaremos o símbolo **"=>"** para indicar **"reduzido a"**.
 
-Como exemplo vamos mostrar as possíveis reduções para a expressão: Quadrado ( 3 + 4), onde a definição de Quadrado x => x * x
+Como exemplo vamos mostrar as possíveis reduções para a expressão: Quadrado ( 3 + 4), onde a definição de Quadrado é como segue:
+```
+Quadrado x => x * x
+```
 Redução-1:
 ```
 Quadrado ( 3 + 4)   => Quadrado 7   (+)
@@ -121,9 +166,10 @@ Quadrado ( 3 + 4)   => (3 + 4) * (3 + 4)    (Quadrado)
                     => 7 * 7                (+)
                     => 49                   (*)
 ```
-Nestes exemplos os símbolos entre parênteses indica a operação que foi utilizada para fazer a redução (ou a transformação). Quando uma expressão não pode mais ser reduzida então ela é impressa.
+Nestes exemplos os símbolos entre parênteses indicam a operação que foi utilizada para fazer a redução (ou transformação). Quando uma expressão não pode mais ser reduzida então ela é impressa.
 No primeiro exemplo a ordem de aplicação das reduções foram: (+), (Quadrado), (\*). 
 No segundo exemplo a ordem foi : (Quadrado), (+), (+), (\*). Assim a primeira opção gastou um número menor de reduções que a segunda. 
+
 É importante fazer a distinção entre um valor e sua representação através de expressões.  A forma equivalente mais simples não é o valor,  mas, a sua representação.
 Existem muitas representações de um mesmo valor, por exemplo o valor: "quarenta e nove", pode  ter as seguintes representações:
 
@@ -139,14 +185,14 @@ Algumas expressões não podem ser reduzidas porque elas não denotam valores be
 ```
 Ex. Uma divisão de um número qualquer por zero, 1/0. 
 ```
-Uma tentativa de avaliar esta expressão pode ocasionar um erro ou cair numa seqüência tão longa sem produzir resultados.
+Uma tentativa de avaliar esta expressão pode ocasionar um erro ou cair numa seqüência muito longa sem produzir resultados.
 Para manter a condição de que toda expressão deve denotar um valor, é conveniente introduzir um símbolo para representar o valor indefinido: **"NIL"**
 
 ### [Tipos]()<a name="Tipos"></a>
 Na notação que iremos seguir, o universo de valores é particionado em coleções organizadas chamadas tipos. 
 Os tipos podem ser:
-- **Básicos**, cujos valores são chamados de primitivos. Os números (num), os valores booleanos (bool) e os caracteres (char).
-- **Derivados**, cujos valores são construídos de outros tipos. O tipo par ou tupla (tipo 1, tipo 2 ), onde "tipo 1" e "tipo 2" são os tipos que formam o par; ou a o tipo lista, cujo definição é : [ tipo ], que pode ser uma sequência de qualquer tipo definido.
+- **Básicos**, cujos valores são chamados de primitivos. Os números, os valores booleanos e os caracteres.
+- **Derivados**, cujos valores são construídos de outros tipos. O tipo par ou tupla: (tipo-1, tipo-2), onde "tipo-1" e "tipo-2" são os tipos que formam o par; ou a o tipo lista, cujo definição é : [ tipo ], que pode ser uma sequência de qualquer tipo definido.
 
 Uma operação é efetuada na forma tradicional:
 ```
@@ -158,19 +204,30 @@ Uma operação é efetuada na forma tradicional:
 Uma expressão bem formada possui o seu tipo deduzido a partir dos tipos dos seus constituintes. A este princípio chamamos **"Tipagem Forte"**. 
 
 A maior conseqüência da disciplina imposta pelo conceito de tipagem forte é que uma expressão que não possa ter o seu tipo identificada não é bem formada e será rejeitada antes de ser avaliada.
+```
+Script Haskell:
 
+ay x =  'A'         
 ```
-Script:
+```
+Script Python:
 
-def ay x = ´A´           
+def ay(x):
+    return 'A'         
 ```
-Para qualquer x, a resposta será sempre 'A', sendo o tipo inferido CHAR.
+Para qualquer x, a resposta será constante e igual a 'A', sendo o tipo inferido "CHAR".
 ```
-Script:
+Script Haskell:
 
-def bee x = x + ay x   
+bee x  = x + ay x   
 ```
-Ao identificado o tipo da função bee, há uma tentativa de somar o resultado de ay, ocorrendo um erro de tipo. 
+```
+Script Python:
+
+def bee(x):
+    return (x + ay(x))   
+```
+Ao identificado o tipo da função *bee*, há uma tentativa de somar o resultado de *ay* que é "CHAR", ocorrendo um erro de tipo. 
 
 Existem dois estágios de avaliação para uma expressão : análise sintática e análise de tipo.
 
@@ -178,27 +235,36 @@ Existem dois estágios de avaliação para uma expressão : análise sintática 
 
 Uma **função** é uma regra de correspondência que associa cada elemento de um tipo A com um único elemento de um segundo tipo B. O tipo A é chamado tipo **fonte** e o tipo B de tipo **alvo**.
 ```
-f :: A -> B
+*f* :: A -> B
 ```
-O tipo de f é A->B , caso A e B tenham tipo. A função f toma argumentos em A e retorna resultados em B. Se *x* é um elemento de A, *f(x)* ou *f x* denota a aplicação de f para x.
+O tipo de *f* é A->B , caso A e B tenham tipo. A função *f* toma argumentos em A e retorna resultados em B. Se *x* é um elemento de A, *f(x)* ou *f x* denota a aplicação de *f* para x.
 
-O valor resultante da aplicação da função é o **único elemento** em B associado com x pela aplicação da regra de correspondência f.
+O valor resultante da aplicação da função é o **único elemento** em B associado com x pela aplicação da regra de correspondência *f*.
 
-É importante separa a função da sua aplicação para um argumento. Em alguns textos matemáticos encontramos "a função f(x)" , quando o correto seria dizer a "função f" .Em tais textos função raramente são consideradas como argumentos para outras funções.
+É importante separa a função da sua aplicação para um argumento. Em alguns textos matemáticos encontramos "a função *f*(x)" , quando o correto seria dizer a "função *f*" .Em tais textos função raramente são consideradas como argumentos para outras funções.
 
 Em Programação Funcional, funções são **valores como outro qualquer**, e podem ser passados como **argumentos para outras funções**.
 
 É importante manter em mente a distinção entre um valor da função e uma particular definição dela. Existem muitas definições possíveis para a mesma função:
 ```
-Script:
+Script Haskell:
 
-def dobro1  x = x + x
+dobro1 x = x + x
 
-def dobro2  x = 2 * x
+dobro2 x = 2 * x
 ```
-Apesar dos procedimentos diferentes para obter a correspondência entre o argumento e o resultado, as funções **dobro1** e **dobro2** denotam a mesma função e podemos afirmar que, dobro1 = dobro2 é matematicamente verdade.
+```
+Script Python:
 
-Dependendo do procedimento escolhido uma definição pode ser mais ou menos eficiente, no sentido de que uma redução pode ser mais rápida que a outra.
+def dobro1(x): 
+    return (x + x)
+
+def dobro2 (x):
+    return (2 * x)
+```
+Apesar dos procedimentos diferentes para obter a correspondência entre o argumento e o resultado, as funções **dobro1** e **dobro2** denotam a mesma função e podemos afirmar que, "dobro1 = dobro2" é matematicamente verdade.
+
+Dependendo do procedimento escolhido uma definição pode ser mais ou menos eficiente, no sentido de que as reduções de uma implementação podem ser menores , portanto mais rápida, que de uma outra.
 
 ### [Números Inteiros]()<a name="NumInt"></a>
 
@@ -257,23 +323,22 @@ A maneira de escrever intervalos é na forma **[a..b]**, onde a e b são número
 Se *a > b*, então o resultado será uma lista sem números, ou seja, uma lista vazia.
 
 Exemplos de intervalos em programação funcional :
+(obs. usaremos a função range, com o seguinte definição:**range([inicio], final [, incremento]))** os valores entre o simbolo [ ] são opcional.
 ```
->[1]
-[1]
+>>>print([i for i in range(1,10,2)])
+[1, 3, 5, 7, 9]
 
->[1..3]
+>>>print([i for i in range(1,4)])
 [1,2,3]
 
->[1..9]
-[1,2,3,4,5,6,7,8,9]
+>>>print([i for i in range(0,10,2)])
+[0, 2, 4, 6, 8]
 
->[9..1]	
-[]
+>>>print([i for i in range(0,10)])
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
->[1..]
-[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...]
-
-Este exemplo é um intervalo infinito.
+>>> print([i for i in range(10)])
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 Uma outra maneira de escrever intervalos é na forma **[a,b..c]**, que indica uma progressão aritmética **a,a+d,a+2*d,...,** e assim por diante, onde **d = b - a**.
 
@@ -294,11 +359,11 @@ No exemplo acima, os tipos são inteiros.
 
 Para formar os elementos da tupla podemos nos valer de expressões aritméticas como:
 ```
->(4+2,1) 
- (6,1) 
+>>> (4+2,3-1)
+(6, 2) 
 
->([1..9], 3-2) 
-([1,2,3,4,5,6,7,8,9],1)
+>>> ([2,3,4],3-1)
+([2, 3, 4], 2)
 ```
 
 ### [Definição de Funções Simples]()<a name="FunSimpl"></a>
@@ -328,14 +393,11 @@ O mesmo dispositivo pode ser utilizado nas definições de atribuições locais 
 ```
 Script:
 
-f x y    =  (a + 1) * (a + 2)
-            where a = (x + y) / 2
+def f(x,y):
+        a = (x + y) / 2
+        return  (a + 1) * (a + 2)
 ```
-A palavra **"where"** é usada para introduzir uma definição local. É importante notar que a palavra "where" é deslocada a direita para enfatizar seu uso como parte da expressão.
-
-Cabe salientar que o uso de uma variável em PF, corresponde ao mesmo uso da notação matemática, ou seja, a notação matemática tem uma semântica estática, 
-
-onde os nomes usados são definidos uma só vez, e seu valor depende somente do contexto da equação que os define.
+O sinal "=" é usada para introduzir uma definição local. É importante notar que a definição é deslocada a direita para enfatizar seu uso como parte da função.
 
 #### Operadores e Funções
 Os operadores e funções possuem diferenças, quanto ao seu posicionamento entre os parâmetros em PF. Os operadores sempre tratam com dois argumentos, ou seja, sua avaliação sempre requisitará somente dois elementos, sendo por este motivo também chamados de **operadores binários**.
@@ -395,19 +457,19 @@ A maneira de escrever intervalos na forma [a..b], onde a e b são números reais
 
 Teste os seguintes exemplos: 
 ```
->[1.1..3.1]
+>>>[1.1..3.1]
 
->[1.1..3.2]
+>>>[1.1..3.2]
 
->[1.1..9.3]
+>>>[1.1..9.3]
 
->[9.0..1.0]
+>>>[9.0..1.0]
 ```
 A outra maneira de escrever intervalos na forma **[a,b..c]**, indica uma progressão aritmética **a,a+d,a+2*d,...,** e assim por diante, onde d = b - a.
 
 Teste o seguinte exemplos: 
 ```
->[1.1,1.2..3.1]
+>>>[1.1,1.2..3.1]
 ```
 #### Tuplas
 As tuplas são elementos formados por combinação de elementos. Conforme o número de elementos que a tupla possui, ela passa a ser chamada de **n-upla**. 
@@ -486,9 +548,9 @@ As possíveis combinações dos valores lógicos A e B , leva a construção da 
 
 Podemos ver as expressões lógicas, como expressões que geram valores lógicos. Teste os exemplos:
 ```
- > 1 <  2  &&  2 < 3           
- > not (1 < 2)      
- > 3 < 2  &&  (2 < 3 || 1 == 2)
+ >>> 1 <  2  &&  2 < 3           
+ >>> not (1 < 2)      
+ >>> 3 < 2  &&  (2 < 3 || 1 == 2)
 ```
 
 O operador **not** (não) tem prioridade maior do que **&&** (e).
@@ -506,19 +568,21 @@ Acrescentamos mais um tipo na construção de tuplas, uma tupla com valores bool
 
 Abaixo mostramos operações que podem ser efetuadas com pares de valores com os tipos conhecidos.
 ```
->(4+2,4.0)
+>>>(4+2,4.0)
 (6,4.0)
 
->(3,4) == (4,3)
+>>>(3,4) == (4,3)
 False
 
->(3,6) < (4,2)
+>>>(3,6) < (4,2)
 True
 ```
 
 Exemplo da definição de uma função usando operadores lógicos. A função compara o valor de um número real com a constante pi.
 ```
-igualPi x =
+Script:
+
+def igualPi x =
         (x == const)
         where const = 3,14
 ```
