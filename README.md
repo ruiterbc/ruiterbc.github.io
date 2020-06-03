@@ -268,26 +268,26 @@ Dependendo do procedimento escolhido uma definição pode ser mais ou menos efic
 
 ### [Números Inteiros]()<a name="NumInt"></a>
 
-Em Programação Funcional, há dois tipos básicos de números: os números inteiros e os números reais. Os inteiros, são denominados **Int** .
+Em Programação Funcional, há dois tipos básicos de números: os números inteiros(Int) e os números reais(Float). Os inteiros são denominados **Int** em Haskell e **int** em Python.
 
 #### Operadores
 Os Operadores Aritméticos são os símbolos que representam certas transformações entre um número ou um grupo deles. 
 
 Os símbolos dos operadores aritméticos utilizados na programação funcional para inteiros, são os mesmos utilizados na matemática. 
 
-Abaixo é apresentada uma tabela com os principais operadores para inteiros e suas respectivas denominações:
+Abaixo é apresentada uma tabela com os principais operadores para inteiros e suas respectivas denominações, além das respectivas representações nas duas linguagens, (H)-Haskell e (P)-Python que serão apresentados apenas se houver diferença, ou (X) se não há função definida:
 
-|operador | denominação|
-|----|----------|
+|operador | denominação|H|P|
+|---------|------------|-------|------|
 | + | adição|
 | - | subtração |
 | * | multiplicação|
 | / | divisão |
-| ^ | exponenciação |
-| div| divisão inteira |
-| mod | resto inteiro |
-| even | é  par |
-| odd | é ímpar |
+| ^ | exponenciação | | **|
+| div| divisão inteira | |//|
+| mod | resto inteiro | | %|
+| even | é  par | |X|
+| odd | é ímpar | |X|
 
 #### Expressões
 As Expressões Aritméticas podem ser aplicadas como uma série de operações aritméticas, efetuadas para gerar um valor. 
