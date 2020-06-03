@@ -580,10 +580,15 @@ True
 
 Exemplo da definição de uma função usando operadores lógicos. A função compara o valor de um número real com a constante pi.
 ```
-Script:
+Script Haskell:
+
+igualPi x = const
+        where const = 3,14
+```
+```
+Script Python:
 
 def igualPi x =
         (x == const)
         where const = 3,14
 ```
-
