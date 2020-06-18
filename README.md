@@ -268,14 +268,14 @@ Dependendo do procedimento escolhido uma definição pode ser mais ou menos efic
 
 ### [Números Inteiros]()<a name="NumInt"></a>
 
-Em Programação Funcional, há dois tipos básicos de números: os números inteiros(Int) e os números reais(Float). Os inteiros são denominados **Int** em Haskell e **int** em Python.
+Em Programação Funcional, há dois tipos básicos de números: os números inteiros(Int) e os números reais(Float). Cada linguagem usa um identificador própio para nomear seus tipos, portanto é necessário descobrir qual o nome utilizado pela linguagem que será usada, por exemplo os inteiros são denominados **Int** em Haskell e **int** em Python. Essas linguagem possuem outras denominações com faixas maiores para estes tipos de números. 
 
 #### Operadores
-Os Operadores Aritméticos são os símbolos que representam certas transformações entre um número ou um grupo deles. 
+Os **Operadores Aritméticos** são os símbolos que representam certas transformações entre um número ou um grupo deles. 
 
 Os símbolos dos operadores aritméticos utilizados na programação funcional para inteiros, são os mesmos utilizados na matemática. 
 
-Abaixo é apresentada uma tabela com os principais operadores para inteiros e suas respectivas denominações, além das respectivas representações nas duas linguagens, (H)-Haskell e (P)-Python que serão apresentados apenas se houver diferença, ou (X) se não há função definida:
+Abaixo é apresentada uma tabela com os principais operadores para inteiros e suas respectivas denominações, além das respectivas representações nas duas linguagens, (H)-Haskell e (P)-Python que serão apresentados apenas se houver diferença, ou (X) se não há função definida pela linguagem:
 
 |operador | denominação|H|P|
 |---------|------------|-------|------|
@@ -290,17 +290,17 @@ Abaixo é apresentada uma tabela com os principais operadores para inteiros e su
 | odd | é ímpar | |X|
 
 #### Expressões
-As Expressões Aritméticas podem ser aplicadas como uma série de operações aritméticas, efetuadas para gerar um valor. 
+As Expressões Aritméticas podem ser aplicadas juntas numa única expressão aritméticas para gerar um valor. 
 
 Quando várias operações aparecem juntas na expressão, certas regras de precedência são providenciadas para resolver possíveis ambiguidades. 
 
-A precedência das regras para operadores aritméticos, segue a seguinte ordem :
+A precedência das regras para operadores aritméticos, segue a seguinte ordem de cima para baixo na tabela:
 
-| operador | denominação|
-|----------|------------|
-| ^ | exponenciação |
-|* , / , div , mod | operadores de multiplicação |
-|+ , - | operadores de adição|
+| operador | denominação|H|P|
+|----------|------------|-|-|
+| ^ | exponenciação ||**|
+|* , / , div , mod | operadores de multiplicação ||* , / , // , %|
+|+ , - | operadores de adição|||
 
   
 
@@ -308,7 +308,16 @@ Quando os operadores surgem numa expressão com o mesmo nível de precedência, 
 
 Na PF as expressões são escrita como na matemática elementar, ou seja:
 ```
-((3 + 5) * 6) / (9 ^ 2)
+Ambiente Haskell:
+
+> ((3 + 5) * 6) / (9 ^ 2)
+0.5925925925925926
+```
+```
+Ambiente Python:
+
+>>> ((3 + 5) * 6) / (9 ** 2)
+0.5925925925925926
 ```
 Verifique a expressão acima sem os parenteses no ambiente de programação.
 
@@ -316,15 +325,33 @@ Verifique a expressão acima sem os parenteses no ambiente de programação.
 #### Intervalos
 Os Intervalos podem ser vistos como uma série de números gerados a partir de uma definição matemática, ou seja, um conjunto de elementos enumerados.
 
-Se quisermos os números inteiros de 1 a 10, basta escrevermos estes dois números entre colchetes e separados por dois pontos seguidos. Assim temos **[1..10]** indicando que queremos um conjunto de números inteiros. Os números gerados, podem ser vistos como uma lista de números inteiros.Os números 1 e 10 são chamados de **limitadores**. Podemos colocar quaisquer limitadores desde que sejam números inteiros.
+Se quisermos os números inteiros de 1 a 10, basta escrevermos estes dois números entre colchetes, separados por dois pontos seguidos. Assim temos **[1..10]** indicando que queremos um conjunto de números inteiros. Os números gerados, podem ser vistos como uma *lista* de números inteiros.Os números 1 e 10 são chamados de **limitadores**. Podemos colocar quaisquer limitadores desde que sejam números inteiros.
 
-A maneira de escrever intervalos é na forma **[a..b]**, onde a e b são números inteiros, indicando que haverá uma lista de números inteiros incrementados na ordem de a para b,aumentando de 1 em 1. 
+A maneira de escrever intervalos é na forma **[a..b]**, onde **a** e **b** são números inteiros, indicando que haverá uma lista de números inteiros incrementados na ordem de **a** para **b**,aumentando de 1 em 1. 
 
-Se *a > b*, então o resultado será uma lista sem números, ou seja, uma lista vazia.
+Se o valor de *a > b*, então o resultado será uma lista sem números, ou seja, uma **lista vazia**.
 
 Exemplos de intervalos em programação funcional :
-(obs. usaremos a função range, com o seguinte definição:**range([inicio], final [, incremento]))** os valores entre o simbolo [ ] são opcional.
 ```
+Ambiente Haskell:
+
+>[1,3..9]
+[1, 3, 5, 7, 9]
+
+>[1..3]
+[1,2,3]
+
+>[0,2..8]
+[0, 2, 4, 6, 8]
+
+>[0..9]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+Na linguagem Python, temos que usar a função **range** para a definição de **Intervalos**, com a seguinte definição:**range([inicio], final [, incremento])** os valor limitados por colchetes( \[ , \] ) são opcionais, o valor final não fará parte da lista (Intervalo Aberto). Para a impressão do intervalo usamos a função **print**, passando como parâmero a construção do intervalo.
+
+```
+Ambiente Python:
+
 >>>print([i for i in range(1,10,2)])
 [1, 3, 5, 7, 9]
 
@@ -336,13 +363,8 @@ Exemplos de intervalos em programação funcional :
 
 >>>print([i for i in range(0,10)])
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
->>> print([i for i in range(10)])
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 Uma outra maneira de escrever intervalos é na forma **[a,b..c]**, que indica uma progressão aritmética **a,a+d,a+2*d,...,** e assim por diante, onde **d = b - a**.
-
-Teste outros exemplos no ambiente de programação.
 
 #### Tuplas
 As Tuplas são vistas como uma combinação de elementos com o objetivo de formar novos elementos, pelos pares de elementos formados.
@@ -438,12 +460,12 @@ Também as regras de precedência são providenciadas para resolver possíveis a
 
 A precedência das regras para operadores aritméticos, segue a seguinte ordem :
 
-|Operador|Denominação|
-|--------|-----------|
-|^|exponenciação|
-|sqrt|raiz quadrada|
-|* , / |operadores de multiplicação e divisão|
-|+ , - |operadores de adição e subtração|
+|Operador|Denominação|H|P|
+|--------|-----------|-|-|
+|^|exponenciação||**|
+|sqrt|raiz quadrada|||
+|* , / |operadores de multiplicação e divisão|||
+|+ , - |operadores de adição e subtração|||
 
 Quando os operadores surgem numa expressão com o mesmo nível de precedência, é aconselhável usar parenteses para evitar ambiguidades.
 
@@ -582,13 +604,13 @@ Exemplo da definição de uma função usando operadores lógicos. A função co
 ```
 Script Haskell:
 
-igualPi x = const
-        where const = 3,14
+igualPi x = x == const
+        where const = 3.14
 ```
 ```
 Script Python:
 
-def igualPi x =
-        (x == const)
-        where const = 3,14
+def igualPi (x):
+        const = 3.14
+        return (x == const)
 ```
