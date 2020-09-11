@@ -11,7 +11,7 @@
 7. [Números Reais](#NumReal)
 8. [Valores Relacionais e Lógicos](#ValReLog)
 
-### Programação Funcional (Haskell & Python)
+### Programação Funcional (Haskell)
 Como o nome sugere, a essência da **Programação Funcional (PF)** como método de programação é a construção de funções. A utilização da palavra *função* é mais no sentido matemático do que no sentido utilizado nas linguagens de programação convencionais. Na matemática, uma função é um objeto que devolve uma lista de todas as variáveis para as quais ele varia, onde o resultado é construido por meio de uma fórmula (*algoritmo*) que calcula o valor correspondente. Assim, por exemplo, se escrevermos: *y = x^2* dizemos que *y* é função de *x* pois, quando *x* varia, *y* também varia como seu quadrado.
 
 A Programação Funcional envolve notação e conceitos de classes ou conjuntos que soam familiares a qualquer pessoa com pequena experiência matemática. O principal papel do programador é construir uma função para resolver um determinado problema. Essa função, que pode envolver outras funções, é expressa numa notação que obedece aos princípios matemáticos.
@@ -25,6 +25,7 @@ A expressão representa um valor a ser obtido, cuja tarefa o computador é capaz
 A forma básica de interação entre o programador e o computador é:
 ```
 Lê -> Calcula -> Exibe
+
 ```
 A seqüência de interação entre o programador e o computador é chamada de **seção**.
 
@@ -33,15 +34,12 @@ O ambiente de interação utilizado neste curso será o ambiente:
 **Codebench** - É um ambiente de aprendizagem disponibilizado pelo [Instituto de Computação](https://codebench.icomp.ufam.edu.br) da UFAM, que permite a utilização de várias linguagens de programação. Nesse ambiente usaremos as linguagens **Haskell** e **Python 3** para escrever os *scrips*. Cabe observar que algumas características conceituais presentes em programação funcional podem não ter uma representações direta nas linguagens. A linguagem Haskell incorpora a maioria dos conceitos, porém a linguagem Python não implementa todos os conceitos.
 
 Uma propriedade característica da P.F. é que uma expressão possui um valor bem definido, não importando a **ordem** da avaliação pelo computador. O significado de uma expressão é o seu **valor** e a tarefa do computador é encontrá-lo. Por exemplo o valor da expressão 6 * 7 é 42. 
-Nos exemplos, a entrada fornecida pelo usuário por meio da interface interativa do Haskell será apresentada pelo sinal ">" e Python será apresentada pelo sinal ">>>". 
+Nos exemplos, a entrada fornecida pelo usuário por meio da interface interativa do Haskell será apresentada pelo sinal ">". 
 ```
 > 6*7
 42
-
->>> 6*7
-42
 ```
-Os scripts são na verdade uma lista de definições de funções, feitas pelo programador e gravado em arquivos com **\<nome do arquivo\>.hs** para a linguagem Haskell e **\<nome do arquivo\>.py** para a linguagem Python, que devem ser carregados no ambiente interativo da linguagem para a sua execução. 
+Os scripts são na verdade uma lista de definições de funções, feitas pelo programador e gravado em arquivos com **\<nome do arquivo\>.hs** para a linguagem Haskell, que devem ser carregados no ambiente interativo da linguagem para a sua execução. 
 
 A instalação dos ambientes das linguagens não será tratada neste texto.
 
@@ -54,18 +52,6 @@ quadrado n = n * n
 menor n m 
     | n <= m = n 
     | otherwise = m
-```
-```
-Script Python:
-
-def quadrado(n):
-    return n*n
-
-def menor (n,m):
-    if (n <= m): 
-        return n 
-    else: 
-        return m
 ```
 
 O propósito da definição de uma função é fazer uma associação entre um nome e um valor.
@@ -81,18 +67,6 @@ Ambiente Haskell:
 3
 
 > quadrado ( menor 3 4 )
-9
-```
-```
-Ambiente Python:
-
->>> quadrado (3 + 4)
-49
-
->>> menor (3, 4)
-3
-
->>> quadrado ( menor (3, 4) )
 9
 ```
 O avaliador pode utilizar as associações para fazer simplificações. Algumas expressões podem ser avaliadas sem que seja indicado o contexto: 3 + 4.
@@ -112,23 +86,6 @@ area = quadrado lado
 144
 
 > menor (area + 4) 150
-148
-
-```
-```
-Script Python:
-
-def lado(): 
-    return 12
-
-def area():
-    return quadrado (lado())
-```
-``` 
->>> area()           
-144
-
->>> menor ((area() + 4), 150)
 148
 
 ```
@@ -209,23 +166,11 @@ Script Haskell:
 
 ay x =  'A'         
 ```
-```
-Script Python:
-
-def ay(x):
-    return 'A'         
-```
 Para qualquer x, a resposta será constante e igual a 'A', sendo o tipo inferido "CHAR".
 ```
 Script Haskell:
 
 bee x  = x + ay x   
-```
-```
-Script Python:
-
-def bee(x):
-    return (x + ay(x))   
 ```
 Ao identificado o tipo da função *bee*, há uma tentativa de somar o resultado de *ay* que é "CHAR", ocorrendo um erro de tipo. 
 
@@ -233,15 +178,15 @@ Existem dois estágios de avaliação para uma expressão : análise sintática 
 
 ### [Funções e Definições]()<a name="FunDef"></a>
 
-Uma **função** é uma regra de correspondência que associa cada elemento de um tipo A com um único elemento de um segundo tipo B. O tipo A é chamado tipo **fonte** e o tipo B de tipo **alvo**.
+Uma **função** é uma regra de correspondência que associa cada elemento de um tipo A com um único elemento de um segundo tipo B. O tipo A é chamado tipo **fonte** (domínio) e o tipo B de tipo **alvo** (contra domínio).
 ```
-*f* :: A -> B
+f :: A -> B
 ```
 O tipo de *f* é A->B , caso A e B tenham tipo. A função *f* toma argumentos em A e retorna resultados em B. Se *x* é um elemento de A, *f(x)* ou *f x* denota a aplicação de *f* para x.
 
 O valor resultante da aplicação da função é o **único elemento** em B associado com x pela aplicação da regra de correspondência *f*.
 
-É importante separa a função da sua aplicação para um argumento. Em alguns textos matemáticos encontramos "a função *f*(x)" , quando o correto seria dizer a "função *f*" .Em tais textos função raramente são consideradas como argumentos para outras funções.
+É importante separa a função da sua aplicação para um argumento. Em alguns textos matemáticos encontramos "a função *f*(x)" , quando o correto seria dizer a "função *f*" .Em tais textos funções raramente são consideradas como argumentos para outras funções.
 
 Em Programação Funcional, funções são **valores como outro qualquer**, e podem ser passados como **argumentos para outras funções**.
 
@@ -252,15 +197,6 @@ Script Haskell:
 dobro1 x = x + x
 
 dobro2 x = 2 * x
-```
-```
-Script Python:
-
-def dobro1(x): 
-    return (x + x)
-
-def dobro2 (x):
-    return (2 * x)
 ```
 Apesar dos procedimentos diferentes para obter a correspondência entre o argumento e o resultado, as funções **dobro1** e **dobro2** denotam a mesma função e podemos afirmar que, "dobro1 = dobro2" é matematicamente verdade.
 
@@ -275,19 +211,19 @@ Os **Operadores Aritméticos** são os símbolos que representam certas transfor
 
 Os símbolos dos operadores aritméticos utilizados na programação funcional para inteiros, são os mesmos utilizados na matemática. 
 
-Abaixo é apresentada uma tabela com os principais operadores para inteiros e suas respectivas denominações, além das respectivas representações nas duas linguagens, (H)-Haskell e (P)-Python que serão apresentados apenas se houver diferença, ou (X) se não há função definida pela linguagem:
+Abaixo é apresentada uma tabela com os principais operadores para inteiros e suas respectivas denominações:
 
-|operador | denominação|H|P|
-|---------|------------|-------|------|
+|operador | denominação|
+|---------|------------|
 | + | adição|
 | - | subtração |
 | * | multiplicação|
 | / | divisão |
-| ^ | exponenciação | | **|
-| div| divisão inteira | |//|
-| mod | resto inteiro | | %|
-| even | é  par | |X|
-| odd | é ímpar | |X|
+| ^ | exponenciação |
+| div| divisão inteira |
+| mod | resto inteiro |
+| even | é  par |
+| odd | é ímpar |
 
 #### Expressões
 As Expressões Aritméticas podem ser aplicadas juntas numa única expressão aritméticas para gerar um valor. 
@@ -296,11 +232,11 @@ Quando várias operações aparecem juntas na expressão, certas regras de prece
 
 A precedência das regras para operadores aritméticos, segue a seguinte ordem de cima para baixo na tabela:
 
-| operador | denominação|H|P|
-|----------|------------|-|-|
-| ^ | exponenciação ||**|
-|* , / , div , mod | operadores de multiplicação ||* , / , // , %|
-|+ , - | operadores de adição|||
+| operador | denominação|
+|----------|------------|
+| ^ | exponenciação |
+|* , / , div , mod |operadores de multiplicação |
+|+ , - | operadores de adição|
 
   
 
@@ -313,19 +249,13 @@ Ambiente Haskell:
 > ((3 + 5) * 6) / (9 ^ 2)
 0.5925925925925926
 ```
-```
-Ambiente Python:
-
->>> ((3 + 5) * 6) / (9 ** 2)
-0.5925925925925926
-```
 Verifique a expressão acima sem os parenteses no ambiente de programação.
 
 
 #### Intervalos
 Os Intervalos podem ser vistos como uma série de números gerados a partir de uma definição matemática, ou seja, um conjunto de elementos enumerados.
 
-Se quisermos os números inteiros de 1 a 10, basta escrevermos estes dois números entre colchetes, separados por dois pontos seguidos. Assim temos **[1..10]** indicando que queremos um conjunto de números inteiros. Os números gerados, podem ser vistos como uma *lista* de números inteiros.Os números 1 e 10 são chamados de **limitadores**. Podemos colocar quaisquer limitadores desde que sejam números inteiros.
+Se quisermos os números inteiros de 1 a 10, basta escrevermos estes dois números entre colchetes, separados por dois pontos seguidos. Assim temos **[1..10]** indicando que queremos um conjunto de números inteiros. Os números gerados, podem ser vistos como uma *lista* de números inteiros. Os números 1 e 10 são chamados de **limitadores**. Podemos colocar quaisquer limitadores desde que sejam números inteiros.
 
 A maneira de escrever intervalos é na forma **[a..b]**, onde **a** e **b** são números inteiros, indicando que haverá uma lista de números inteiros incrementados na ordem de **a** para **b**,aumentando de 1 em 1. 
 
@@ -347,23 +277,7 @@ Ambiente Haskell:
 >[0..9]
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
-Na linguagem Python, temos que usar a função **range** para a definição de **Intervalos**, com a seguinte definição:**range([inicio], final [, incremento])** os valor limitados por colchetes( \[ , \] ) são opcionais, o valor final não fará parte da lista (Intervalo Aberto). Para a impressão do intervalo usamos a função **print**, passando como parâmero a construção do intervalo.
 
-```
-Ambiente Python:
-
->>>print([i for i in range(1,10,2)])
-[1, 3, 5, 7, 9]
-
->>>print([i for i in range(1,4)])
-[1,2,3]
-
->>>print([i for i in range(0,10,2)])
-[0, 2, 4, 6, 8]
-
->>>print([i for i in range(0,10)])
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-```
 Uma outra maneira de escrever intervalos é na forma **[a,b..c]**, que indica uma progressão aritmética **a,a+d,a+2*d,...,** e assim por diante, onde **d = b - a**.
 
 #### Tuplas
@@ -381,10 +295,10 @@ No exemplo acima, os tipos são inteiros.
 
 Para formar os elementos da tupla podemos nos valer de expressões aritméticas como:
 ```
->>> (4+2,3-1)
+> (4+2,3-1)
 (6, 2) 
 
->>> ([2,3,4],3-1)
+> ([2,3,4],3-1)
 ([2, 3, 4], 2)
 ```
 
@@ -413,13 +327,12 @@ Como exemplo observe a seguinte função :
 
 O mesmo dispositivo pode ser utilizado nas definições de atribuições locais para funções:
 ```
-Script:
+Script Haskell:
 
-def f(x,y):
-        a = (x + y) / 2
-        return  (a + 1) * (a + 2)
+f x y = (a + 1) * (a + 2)
+        where a = (x + y) / 2
 ```
-O sinal "=" é usada para introduzir uma definição local. É importante notar que a definição é deslocada a direita para enfatizar seu uso como parte da função.
+O sinal "=" é usada para introduzir uma definição local.
 
 #### Operadores e Funções
 Os operadores e funções possuem diferenças, quanto ao seu posicionamento entre os parâmetros em PF. Os operadores sempre tratam com dois argumentos, ou seja, sua avaliação sempre requisitará somente dois elementos, sendo por este motivo também chamados de **operadores binários**.
@@ -450,9 +363,6 @@ Abaixo mostramos a tabela dos operadores principais para números reais:
 |^|exponenciação|
 |sqrt|raiz quadrada|
 
-É importante salientar que não é possível usar os operadores aritméticos com tipos diferentes, ou seja, não podemos somar 2 com 2.0. 
-
-Experimente executar esta operação no ambiente de excução: 2 + 2.0
 
 Como nos números inteiros as expressões aritméticas podem ser vistas como uma série de operações aritméticas, efetuadas para gerar um valor. 
 
@@ -460,12 +370,12 @@ Também as regras de precedência são providenciadas para resolver possíveis a
 
 A precedência das regras para operadores aritméticos, segue a seguinte ordem :
 
-|Operador|Denominação|H|P|
-|--------|-----------|-|-|
-|^|exponenciação||**|
-|sqrt|raiz quadrada|||
-|* , / |operadores de multiplicação e divisão|||
-|+ , - |operadores de adição e subtração|||
+|Operador|Denominação|
+|--------|-----------|
+|^|exponenciação|
+|sqrt|raiz quadrada|
+|* , / |operadores de multiplicação e divisão|
+|+ , - |operadores de adição e subtração|
 
 Quando os operadores surgem numa expressão com o mesmo nível de precedência, é aconselhável usar parenteses para evitar ambiguidades.
 
@@ -479,19 +389,20 @@ A maneira de escrever intervalos na forma [a..b], onde a e b são números reais
 
 Teste os seguintes exemplos: 
 ```
->>>[1.1..3.1]
+> [1.1..3.1]
 
->>>[1.1..3.2]
+> [1.1..3.2]
 
->>>[1.1..9.3]
+> [1.1..9.3]
 
->>>[9.0..1.0]
+> [9.0..1.0]
 ```
 A outra maneira de escrever intervalos na forma **[a,b..c]**, indica uma progressão aritmética **a,a+d,a+2*d,...,** e assim por diante, onde d = b - a.
 
 Teste o seguinte exemplos: 
 ```
->>>[1.1,1.2..3.1]
+> [1.1,1.2..3.1]
+
 ```
 #### Tuplas
 As tuplas são elementos formados por combinação de elementos. Conforme o número de elementos que a tupla possui, ela passa a ser chamada de **n-upla**. 
@@ -508,9 +419,9 @@ A sintaxe é a função antes da tupla, assim, **fst (2.3,4)** gera o valor **2.
 
 Já sabemos como definir funções simples, agora podemos definir novas funções para trabalhar com reais e tuplas. Para calcular a área de um círculo, definimos a seguinte função:
 ```
-Script:
+Script Haskell:
 
-def areacirc r = const * r ^ 2
+areacirc r = const * r ^ 2
                  where const = 3.14
 ```
 Para pegar o primeiro elemento de uma dupla (2-upla)
@@ -570,9 +481,9 @@ As possíveis combinações dos valores lógicos A e B , leva a construção da 
 
 Podemos ver as expressões lógicas, como expressões que geram valores lógicos. Teste os exemplos:
 ```
- >>> 1 <  2  &&  2 < 3           
- >>> not (1 < 2)      
- >>> 3 < 2  &&  (2 < 3 || 1 == 2)
+ > 1 <  2  &&  2 < 3           
+ > not (1 < 2)      
+ > 3 < 2  &&  (2 < 3 || 1 == 2)
 ```
 
 O operador **not** (não) tem prioridade maior do que **&&** (e).
@@ -590,13 +501,13 @@ Acrescentamos mais um tipo na construção de tuplas, uma tupla com valores bool
 
 Abaixo mostramos operações que podem ser efetuadas com pares de valores com os tipos conhecidos.
 ```
->>>(4+2,4.0)
+>(4+2,4.0)
 (6,4.0)
 
->>>(3,4) == (4,3)
+>(3,4) == (4,3)
 False
 
->>>(3,6) < (4,2)
+>(3,6) < (4,2)
 True
 ```
 
@@ -606,11 +517,4 @@ Script Haskell:
 
 igualPi x = x == const
         where const = 3.14
-```
-```
-Script Python:
-
-def igualPi (x):
-        const = 3.14
-        return (x == const)
 ```
